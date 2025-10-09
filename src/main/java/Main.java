@@ -8,22 +8,21 @@ import java.util.Scanner;
 public class Main {
     public static void main(String[] args) {
         Scanner scan = new Scanner(System.in);
-        System.out.println("Welcome to the Covid Web. \nHere you can ask questions about covid, to keep you informed...");
-        System.out.println("Please Enter a date(year-month-day): ");
-        int covidDate = scan.nextInt();
 
-        String url = "https://api.covid19api.com/v1/covid-data?date=" + date;
-        HttpClient client = HttpClient.newHttpClient();
+        boolean web = true;
+        while(web) {
+            //Initial Page
+            System.out.println("Welcome to the Covid Web. \nHere you can ask questions about covid, to keep you informed...");
+            System.out.println("Please Enter a date(year-month-day): ");
+            String covidDate = scan.next();
+            //Asking for Date
 
 
-        HttpRequest request = HttpRequest.newBuilder
-                .uri(URI.create(url))
-                .build();
-        try {
-            HttpResponse<String> response = client.send(request, HttpResponse.BodyHandlers.ofString());
-
-            return response.body();
-        } catch (IOException | InterruptedException e) {
-            e.printStackTrace();
-            return "Error: " + e.getMessage();
+            //Breaking the while loop
+            System.out.println("Would you like to ask a new question?");
+            String userInput = scan.next();
+            if (userInput.equals("No") || userInput.equalsIgnoreCase("no")) { web  = false;}
+            else {web = true;}
         }
+    }
+}

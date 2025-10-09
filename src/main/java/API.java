@@ -7,21 +7,30 @@ import java.net.http.HttpRequest;
 import java.net.http.HttpResponse;
 
 public class API {
-    public static Covid getCovid(int covidInfo) {
-        String url = "https://api.covid19api.com/v1/covid/"+covidInfo;
+    public static String getCovid() {
+        String url = "https://api.covid19api.com/v1/covid/";
         HttpClient client = HttpClient.newHttpClient();
-        HttpRequest request = HttpRequest.newBuilder
-                (URI.create(url))
+
+        HttpRequest request = HttpRequest.newBuilder()
+                .uri(URI.create(url))
                 .build();
-
         try {
+
             HttpResponse<String> response = client.send(request, HttpResponse.BodyHandlers.ofString());
-            if (response.statusCode() == 200) {
-                JsonObject covidInfo = new JsonParser().parseString(response.body()).getAsJsonObject();
-            }
+            JsonObject json = JsonParser.parseString(response.body()).getAsJsonObject();
+
+            int newConfirmed = json.getAsJsonObject("Global").get("NewConfirmed").getAsInt();
+
+            return "New Confirmed Cases" + newConfirmed;
+
+        } catch (IOException | InterruptedException e) {
+            e.printStackTrace();
+            return "Error: " + e.getMessage();
         }
+    }
 
-
+    public static void main (String[] args) {
+        System.out.println(getCovid());
 
     }
 
