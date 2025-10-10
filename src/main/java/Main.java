@@ -13,16 +13,50 @@ public class Main {
         while(web) {
             //Initial Page
             System.out.println("Welcome to the Covid Web. \nHere you can ask questions about covid, to keep you informed...");
-            System.out.println("Please Enter a date(year-month-day): ");
-            String covidDate = scan.next();
-            //Asking for Date
+            System.out.println("Now we will need a little more research from you. \nI will give you a list of countries and from there we will pick your region of information");
+            System.out.println("Please Pick a Country => China,  Russia,  Brazil:");
+            String useriNput = scan.next();
+
+            if (useriNput.equalsIgnoreCase("Russia")) {
+                System.out.println("Now please provide the ISO Code to Russia (hint: RU): ");
+                String userInput = scan.next();
+            } else if (useriNput.equalsIgnoreCase("China")) {
+                System.out.println("Now please provide the ISO code to China (hint: CHN): ");
+                String userInput = scan.next();
+            } else if (useriNput.equalsIgnoreCase("Brazil")){
+                System.out.println("Now please provide the ISO code to Brazil (hint: Br): ");
+                String userInput = scan.next();
+            } else {
+                System.out.println("It seems like you didn't type in any of the suggested countries...Please try again!");
+                continue;
+            }
+
+            System.out.println("Great, now I need the capital state from the Country of your choice: ");
+            String userInput = scan.next();
+
+            if
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
             //Breaking the while loop
             System.out.println("Would you like to ask a new question?");
             String userInput = scan.next();
             if (userInput.equals("No") || userInput.equalsIgnoreCase("no")) { web  = false;}
-            else {web = true;}
         }
     }
 }

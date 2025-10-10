@@ -5,10 +5,10 @@ import java.net.URI;
 import java.net.http.HttpClient;
 import java.net.http.HttpRequest;
 import java.net.http.HttpResponse;
-
+//https://covid-api.com/api/reports?date=2020-03-14&q=China%20Beijing&iso=CHN&region_name=China&region_province=Beijing  (API DO NOT DELETE PLZ)
 public class API {
     public static String getCovid() {
-        String url = "https://api.covid19api.com/v1/covid/";
+        String url = "https://covid-api.com/api/reports?date=2020-03-14&q" + Country + "20"+ State + "&iso"+ ISO + "&region_name"+ regionName+"&region_province" + Providence;;
         HttpClient client = HttpClient.newHttpClient();
 
         HttpRequest request = HttpRequest.newBuilder()
