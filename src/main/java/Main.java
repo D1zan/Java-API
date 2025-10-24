@@ -1,3 +1,7 @@
+import com.google.gson.Gson;
+import com.google.gson.GsonBuilder;
+import com.google.gson.JsonObject;
+import com.google.gson.JsonParser;
 import java.io.IOException;
 import java.net.URI;
 import java.net.http.HttpClient;
@@ -9,9 +13,10 @@ public class Main {
     public static void main(String[] args) {
         Scanner scan = new Scanner(System.in);
 
+
         boolean web = true;
         while(web) {
-            //Initial Page
+            //Initial text
             System.out.println("Welcome to the Covid Web. \nHere you can ask questions about covid, to keep you informed...");
             System.out.println("Now we will need a little more research from you. \nI will give you a list of countries and from there we will pick your region of information");
             System.out.println("Please Pick a Country => China,  Russia,  Brazil:");
@@ -29,34 +34,16 @@ public class Main {
             } else {
                 System.out.println("It seems like you didn't type in any of the suggested countries...Please try again!");
                 continue;
+                //if they say smth they're not supposed to ^
             }
-
             System.out.println("Great, now I need the capital state from the Country of your choice: ");
             String userInput = scan.next();
 
-            if
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
             //Breaking the while loop
-            System.out.println("Would you like to ask a new question?");
-            String userInput = scan.next();
-            if (userInput.equals("No") || userInput.equalsIgnoreCase("no")) { web  = false;}
+           // System.out.println("Would you like to ask a new question?");
+           // String userInput = scan.next();
+           // if (userInput.equals("No") || userInput.equalsIgnoreCase("no")) { web  = false;}
         }
     }
 }
