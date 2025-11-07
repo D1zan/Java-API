@@ -8,10 +8,13 @@ import com.google.gson.JsonObject;
 import com.google.gson.JsonParser;
     public class API {
         public static Covid getCovidData(String iso, String region, String province)
-                throws IOException, InterruptedException { String url = "https://covid-api.com/api/reports?date=2020-03-14&q=" + province + "&iso=" + iso + "&region_name=" + region + "&region_province=" + province;
+                throws IOException, InterruptedException {
+                    String url = "https://covid-api.com/api/reports?date=2020-03-14&q=" + province + "%20&iso=" + iso + "&region_name=" + region + "&region_province=" + province;
+                    System.out.println(url);
                     HttpClient client = HttpClient.newHttpClient();
                     HttpRequest request = HttpRequest.newBuilder() .uri(URI.create(url)) .build();
                     HttpResponse<String> response = client.send(request, HttpResponse.BodyHandlers.ofString());
+
                     JsonObject json = JsonParser.parseString(response.body()).getAsJsonObject();
                     JsonObject data = json.getAsJsonArray("data").get(0).getAsJsonObject();
 
@@ -32,4 +35,5 @@ import com.google.gson.JsonParser;
 
 
 
-//https://covid-api.com/api/reports?date=2020-03-14&q=China%20Beijing&iso=CHN&region_name=China&region_province=Beijing (API DO NOT DELETE PLZ)
+//https://covid-api.com/api/reports?date=2020-03-14&q=China%20Beijing&iso=CHN&region_name=China&region_province=Beijing
+//https://covid-api.com/api/reports?date=2020-03-14&q=brazil%20brasilia&iso=br&region_name=brazil&region_province=brasilia(API DO NOT DELETE PLZ)
