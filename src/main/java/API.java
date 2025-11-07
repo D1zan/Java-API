@@ -36,4 +36,5 @@ import com.google.gson.JsonParser;
 
 
 //https://covid-api.com/api/reports?date=2020-03-14&q=China%20Beijing&iso=CHN&region_name=China&region_province=Beijing
-//https://covid-api.com/api/reports?date=2020-03-14&q=brazil%20brasilia&iso=br&region_name=brazil&region_province=brasilia(API DO NOT DELETE PLZ)
+//https://covid-api.com/api/reports?date=2020-03-14&q=Brazil%20Brasilia&iso=br&region_name=Brazil&region_province=Brasilia
+//https://covid-api.com/api/reports?date=2020-03-14&q=Russia%20Moscow&iso=br&region_name=Russia&region_province=Moscow(API DO NOT DELETE PLZ)
