@@ -36,14 +36,24 @@ public class Main {
                 continue;
                 //if they say smth they're not supposed to ^
             }
-            System.out.println("Great, now I need the capital state from the Country of your choice: ");
-            String userInput = scan.next();
+            try {
+                Covid result = API.getCovidData(useriNput, useriNput, userInput);
+                System.out.println("\n--- COVID RESULTS ---");
+                System.out.println("Date: " + result.getDate());
+                System.out.println("Country: " + result.getCountry());
+                System.out.println("Region: " + result.getProvidence());
+                System.out.println("Deaths: " + result.getDeaths());
+                System.out.println("Recovered: " + result.getRecoveries());
+                System.out.println("Fatality Rate: " + result.getFatality());
 
+            } catch (Exception e) {
+                System.out.println("Error fetching API data: " + e.getMessage());
+            }
 
             //Breaking the while loop
-           // System.out.println("Would you like to ask a new question?");
-           // String userInput = scan.next();
-           // if (userInput.equals("No") || userInput.equalsIgnoreCase("no")) { web  = false;}
+            System.out.println("Would you like to ask a new question?");
+            String userInput = scan.next();
+            if (userInput.equals("No") || userInput.equalsIgnoreCase("no")) { web  = false;}
         }
     }
 }
