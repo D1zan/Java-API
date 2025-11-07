@@ -8,7 +8,7 @@ import com.google.gson.JsonObject;
 import com.google.gson.JsonParser;
     public class API {
         public static Covid getCovidData(String iso, String region, String province)
-                throws IOException, InterruptedException { String url = "https://covid-api.com/api/reports?date=2020-03-14&q=" + region + "%20" + province + "&iso=" + iso + "&region_name=" + region + "&region_province=" + province;
+                throws IOException, InterruptedException { String url = "https://covid-api.com/api/reports?date=2020-03-14&q=" + province + "&iso=" + iso + "&region_name=" + region + "&region_province=" + province;
                     HttpClient client = HttpClient.newHttpClient();
                     HttpRequest request = HttpRequest.newBuilder() .uri(URI.create(url)) .build();
                     HttpResponse<String> response = client.send(request, HttpResponse.BodyHandlers.ofString());
@@ -26,6 +26,7 @@ import com.google.gson.JsonParser;
             int recoveries = data.get("recovered").getAsInt();
             double fatality = data.get("fatality_rate").getAsDouble();
             return new Covid(date, country, state, ISO, regionName, providence, deaths, recoveries, fatality);
+            //covid object
         }
     }
 
