@@ -19,31 +19,46 @@ public class Main {
             //Initial text
             System.out.println("Welcome to the Covid Web. \nHere you can ask questions about covid, to keep you informed...");
             System.out.println("Now we will need a little more research from you. \nI will give you a list of countries and from there we will pick your region of information");
-            System.out.println("Please Pick a Country => China,  Russia,  Brazil:");
-            String useriNput = scan.next();
+            System.out.println("Pick a country: China, Russia, Brazil: ");
+            String country = scan.next();
 
-            if (useriNput.equalsIgnoreCase("Russia")) {
-                System.out.println("Now please provide the ISO Code to Russia (hint: RU): ");
-                String userInput = scan.next();
-            } else if (useriNput.equalsIgnoreCase("China")) {
-                System.out.println("Now please provide the ISO code to China (hint: CHN): ");
-                String userInput = scan.next();
-            } else if (useriNput.equalsIgnoreCase("Brazil")){
-                System.out.println("Now please provide the ISO code to Brazil (hint: Br): ");
-                String userInput = scan.next();
+            String iso = "";
+            if (country.equalsIgnoreCase("Russia")) {
+                System.out.println("What is the ISO code (hint: RU):");
+                iso = scan.next();
+            } else if (country.equalsIgnoreCase("China")) {
+                System.out.println("What is the ISO code (hint: CHN):");
+                iso = scan.next();
+            } else if (country.equalsIgnoreCase("Brazil")) {
+                System.out.println("What is the ISO code (hint: BR):");
+                iso = scan.next();
             } else {
-                System.out.println("It seems like you didn't type in any of the suggested countries...Please try again!");
+                System.out.println("Invalid country. Try again!");
                 continue;
-                //if they say smth they're not supposed to ^
             }
-            System.out.println("Great, now I need the capital state from the Country of your choice: ");
-            String userInput = scan.next();
+
+            System.out.println("Provide province/state (Brasilia, Beijing, Moscow): ");
+            String providence = scan.next();
+
+            try {
+                System.out.println("Here's all the info:");
+                Covid result = API.getCovidData(iso, country, providence);
+                System.out.println("\n--- COVID RESULTS ---");
+                System.out.println("Date: " + result.getDate());
+                System.out.println("Country: " + result.getCountry());
+                System.out.println("Region: " + result.getProvidence());
+                System.out.println("Deaths: " + result.getDeaths());
+                System.out.println("Recovered: " + result.getRecoveries());
+                System.out.println("Fatality Rate: " + result.getFatality());
+            } catch (Exception e) {
+                System.out.println("Error fetching API data: " + e.getMessage());
+            }
 
 
             //Breaking the while loop
-           // System.out.println("Would you like to ask a new question?");
-           // String userInput = scan.next();
-           // if (userInput.equals("No") || userInput.equalsIgnoreCase("no")) { web  = false;}
+            System.out.println("Would you like to ask a new question?");
+            String userInput = scan.next();
+            if (userInput.equals("No") || userInput.equalsIgnoreCase("no")) { web  = false;}
         }
     }
 }

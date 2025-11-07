@@ -1,4 +1,5 @@
 public class Covid {
+
     private String date;
     private String country;
     private String state;
@@ -9,7 +10,8 @@ public class Covid {
     private int recoveries;
     private double fatality;
 
-    public Covid(String date,String country, String state, String ISO, String regionName, String providence, int deaths, int recoveries, double fatality) {
+    public Covid( String date,String country, String state, String ISO, String regionName, String providence, int deaths, int recoveries, double fatality) {
+
         this.date = date;
         this.country = country;
         this.state = state;
@@ -34,17 +36,13 @@ public class Covid {
     public String getRegionName() {
         return regionName;
     }
-    public String getProvidence() {
-        return providence;
-    }
+    public String getProvidence() {return providence;}
     public int getDeaths() {
         return deaths;
     }
-
     public int getRecoveries() {
         return recoveries;
     }
-
     public double getFatality() {
         return fatality;
     }
